@@ -52,7 +52,7 @@ Make sure you removed the GENERATE_UNIQUE and MASTER_PLIST_URL options.
 
 Now connect to the macos vnc (if you enabled screen sharing) with your vnc client to  
 vnc://dock:5990  
-otherwise  
+otherwise set a qemu vnc password like before and connect to:  
 vnc://dock:5998  
 
 Changes to the macos disk will be saved.  You can shut it down.  If you want to start it again find the docker id from docker ps or docker ps -a
@@ -61,4 +61,4 @@ docker exec -it dockerIDhere bash
 once in the container shell type ./Launch-nopicker.sh  
 to start qemu again and start the VM.  
 
--
+
