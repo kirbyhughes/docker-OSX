@@ -1,14 +1,14 @@
 First run this to start the installer, I do it all headless because there is no X on my docker server:
 
-docker run -it \
-    --device /dev/kvm \
-    -p 50922:10022 \
-    -p 5999:5999 \
-    --name ventura \
-    -e EXTRA="-display none -vnc 0.0.0.0:99,password=on" \
-    -e GENERATE_UNIQUE=true \
-    -e MASTER_PLIST_URL='https://raw.githubusercontent.com/sickcodes/osx-serial-generator/master/config-custom.plist' \
-    sickcodes/docker-osx:ventura
+    docker run -it \
+        --device /dev/kvm \
+        -p 50922:10022 \
+        -p 5999:5999 \
+        --name ventura \
+        -e EXTRA="-display none -vnc 0.0.0.0:99,password=on" \
+        -e GENERATE_UNIQUE=true \
+        -e MASTER_PLIST_URL='https://raw.githubusercontent.com/sickcodes/osx-serial-generator/master/config-custom.plist' \
+        sickcodes/docker-osx:ventura
     
 Then you know when it is time to do something when things stop scrolling and you see
 audio: Failed to create voice `adc'
@@ -35,18 +35,18 @@ Copy that somewhere and then go into the dir where you copied it.  This is where
 
 Then use the naked image to access it.  Here you can increase ram and cores.  Not sure if SMP is supposed to match CORES or what.  I give the container a name here with --name.
 
-docker run -it \
-    -e RAM=6 \
-    -e SMP=2 \
-    -e CORES=2 \
-    --name ventura \
-    --device /dev/kvm \
-    -p 50823:10022 \
-    -p 5998:5999 \
-    -p 5990:5900 \
-    -e EXTRA="-display none -vnc 0.0.0.0:99,password=on" \
-    -v "${PWD}/mac_hdd_ng.img:/image" \
-    sickcodes/docker-osx:naked
+    docker run -it \
+        -e RAM=6 \
+        -e SMP=2 \
+        -e CORES=2 \
+        --name ventura \
+        --device /dev/kvm \
+        -p 50823:10022 \
+        -p 5998:5999 \
+        -p 5990:5900 \
+        -e EXTRA="-display none -vnc 0.0.0.0:99,password=on" \
+        -v "${PWD}/mac_hdd_ng.img:/image" \
+        sickcodes/docker-osx:naked
     
 Make sure you removed the GENERATE_UNIQUE and MASTER_PLIST_URL options.
 
